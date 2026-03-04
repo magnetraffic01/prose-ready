@@ -12,6 +12,7 @@ export async function POST(req: NextRequest) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
+      signal: AbortSignal.timeout(55000), // gpt-5-mini reasoning model needs more time
     });
 
     if (!res.ok) {
