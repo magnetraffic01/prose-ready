@@ -1,11 +1,15 @@
 "use client";
 import { useTranslations } from "next-intl";
 import { ShieldCheck, PlayCircle } from "lucide-react";
+import ChatSimulatorWidget from "./ChatSimulatorWidget";
 
 export default function Hero() {
   const t = useTranslations("hero");
   return (
-    <section className="relative overflow-hidden pt-20 pb-24 lg:pt-40 lg:pb-52" style={{ background: "linear-gradient(to bottom, rgba(239,246,255,0.5), transparent)" }}>
+    <section
+      className="relative overflow-hidden pt-20 pb-24 lg:pt-40 lg:pb-52"
+      style={{ background: "linear-gradient(to bottom, rgba(239,246,255,0.5), transparent)" }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-12">
 
         {/* Left: Copy */}
@@ -33,19 +37,9 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right: Remotion Video */}
-        <div className="flex-1 w-full max-w-xl lg:max-w-none">
-          <div className="relative rounded-2xl overflow-hidden glass-card shadow-2xl shadow-primary/10">
-            <video
-              src="/chat-simulation.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-auto rounded-2xl"
-              style={{ display: "block" }}
-            />
-          </div>
+        {/* Right: Animated Chat Simulator */}
+        <div className="flex-1 w-full max-w-lg lg:max-w-none">
+          <ChatSimulatorWidget />
         </div>
 
       </div>
