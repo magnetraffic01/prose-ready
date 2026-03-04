@@ -1,0 +1,173 @@
+{
+  "name": "ProSe Ready - Chat Simulador",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "prose-ready-chat",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "prose-ready-chat"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extraer datos del body\nconst body = $input.first().json.body;\nconst message = body.message || '';\nconst history = body.history || [];\nconst locale = body.locale || 'es';\nconst sessionId = body.sessionId || 'anon';\nconst systemPrompt = body.systemPrompt || '';\n\n// Mapear locale a idioma completo\nconst langMap = { es: 'Spanish', en: 'English', pt: 'Portuguese' };\nconst language = langMap[locale] || 'Spanish';\n\n// Construir system prompt dinámico\nconst systemContent = systemPrompt || `You are a USCIS asylum officer conducting an asylum interview simulation. \nRespond in ${language} (auto-detect the user's language and always match it).\nBe professional but empathetic. Keep responses concise (3-4 sentences max).\nDetect inconsistencies in the applicant's answers.\nDo not use markdown formatting. Speak naturally.\nIf the message is 'INICIO_SESION', introduce yourself briefly and ask the first standard asylum question.`;\n\n// Construir historial de mensajes para OpenAI\nconst openaiMessages = [\n  { role: 'system', content: systemContent }\n];\n\n// Agregar historial previo (máximo 20 mensajes para no exceder contexto)\nconst recentHistory = history.slice(-20);\nfor (const msg of recentHistory) {\n  if (msg.role === 'user' || msg.role === 'assistant') {\n    openaiMessages.push({\n      role: msg.role,\n      content: msg.content\n    });\n  }\n}\n\n// Agregar mensaje actual del usuario\nif (message && message !== 'INICIO_SESION') {\n  openaiMessages.push({ role: 'user', content: message });\n}\n\nreturn [{\n  json: {\n    messages: openaiMessages,\n    sessionId,\n    locale\n  }\n}];"
+      },
+      "id": "build-messages",
+      "name": "Preparar Mensajes",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "model",
+              "value": "gpt-4.5-preview"
+            },
+            {
+              "name": "messages",
+              "value": "={{ $json.messages }}"
+            },
+            {
+              "name": "max_tokens",
+              "value": "=400"
+            },
+            {
+              "name": "temperature",
+              "value": "=0.7"
+            },
+            {
+              "name": "stream",
+              "value": "=false"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "openai-call",
+      "name": "OpenAI GPT-4.5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [680, 300],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "openai-header-auth",
+          "name": "OpenAI API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const response = $input.first().json;\nconst reply = response.choices?.[0]?.message?.content || 'Lo siento, ocurrió un error. Intenta de nuevo.';\nconst sessionId = $('Preparar Mensajes').first().json.sessionId;\nconst locale = $('Preparar Mensajes').first().json.locale;\n\nreturn [{\n  json: {\n    reply: reply.trim(),\n    sessionId,\n    locale,\n    tokens: response.usage?.total_tokens || 0\n  }\n}];"
+      },
+      "id": "extract-reply",
+      "name": "Extraer Respuesta",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              }
+            ]
+          }
+        }
+      },
+      "id": "respond",
+      "name": "Responder",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1120, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Preparar Mensajes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar Mensajes": {
+      "main": [
+        [
+          {
+            "node": "OpenAI GPT-4.5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI GPT-4.5": {
+      "main": [
+        [
+          {
+            "node": "Extraer Respuesta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extraer Respuesta": {
+      "main": [
+        [
+          {
+            "node": "Responder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": ""
+  },
+  "staticData": null,
+  "tags": ["prose-ready", "chat", "openai"],
+  "active": true
+}
