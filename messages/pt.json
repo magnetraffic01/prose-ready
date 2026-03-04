@@ -1,0 +1,96 @@
+{
+  "nav": {
+    "howItWorks": "Como funciona",
+    "scenarios": "Cenários",
+    "plans": "Planos",
+    "faq": "Perguntas",
+    "language": "Português",
+    "cta": "Simulação Grátis"
+  },
+  "hero": {
+    "badge": "IA Treinada em Processos dos EUA",
+    "title": "Simulador de",
+    "titleHighlight": "entrevistas",
+    "titleEnd": "de asilo com IA",
+    "subtitle": "O oficial não vai te dar uma segunda chance.",
+    "subtitleHighlight": "Nós sim.",
+    "subtitleEnd": "Pratique sua entrevista como se fosse o dia real com nossa tecnologia de detecção de riscos.",
+    "ctaPrimary": "Começar simulação gratuita",
+    "ctaSecondary": "Ver como funciona",
+    "sessionLabel": "Sessão de Simulação",
+    "sessionStatus": "Simulação em andamento...",
+    "alertTitle": "Alerta de Contradição",
+    "alertDesc": "Sua resposta sobre a data de entrada difere da sua declaração inicial no Formulário I-589."
+  },
+  "why": {
+    "title": "Por que ProSe Ready?",
+    "subtitle": "Porque te damos preparação real para enfrentar seu processo com segurança.",
+    "features": [
+      { "title": "Entenda seu caso", "desc": "Analise os pontos-chave da sua narrativa de asilo e fortaleça sua história." },
+      { "title": "Um passo à frente", "desc": "Antecipe as perguntas difíceis que o oficial poderá te fazer." },
+      { "title": "Conheça os riscos", "desc": "Identifique possíveis contradições antes da sua entrevista oficial." },
+      { "title": "Sem improvisação", "desc": "Chegue preparado com respostas claras e estruturadas legalmente." },
+      { "title": "Calma total", "desc": "Reduza a ansiedade praticando em um ambiente seguro e privado." }
+    ]
+  },
+  "problem": {
+    "title": "Assessoria saturada e barreiras de idioma",
+    "desc": "O sistema jurídico está sobrecarregado e não saber o que esperar aumenta drasticamente o risco de negação. O ProSe Ready fecha a lacuna tecnológica para que você possa defender seu caso com as mesmas ferramentas de um especialista.",
+    "cta": "Saber mais sobre o sistema"
+  },
+  "how": {
+    "title": "Como funciona em 3 passos",
+    "steps": [
+      { "title": "Entenda seu caso", "desc": "Analise os pontos-chave da sua narrativa de asilo e fortaleça sua história." },
+      { "title": "Pratique a entrevista", "desc": "Simule perguntas reais com nossa IA treinada em processos do USCIS." },
+      { "title": "Receba feedback", "desc": "Identifique contradições e áreas de melhoria antes da sua entrevista oficial." }
+    ]
+  },
+  "scenarios": {
+    "title": "Cenários de Prática",
+    "subtitle": "Projetados para replicar exatamente cada etapa do processo migratório.",
+    "select": "Selecionar",
+    "items": [
+      { "tag": "Afirmativo", "title": "USCIS (Escritório de Asilo)", "desc": "Ideal para quem está dentro dos EUA e solicita asilo voluntariamente. Foco em credibilidade e detalhes do relato." },
+      { "tag": "Defensivo Inicial", "title": "Medo Crível", "desc": "Preparação para a entrevista crítica na fronteira. Aprenda a identificar e comunicar os elementos-chave de perseguição sob pressão." },
+      { "tag": "Judicial", "title": "Tribunal de Imigração", "desc": "Simule um interrogatório cruzado do procurador do governo (ICE) e perguntas diretas do Juiz de Imigração." }
+    ]
+  },
+  "pricing": {
+    "title": "Planos de Preparação",
+    "subtitle": "Escolha a opção que melhor se adapta à sua etapa atual.",
+    "recommended": "Recomendado",
+    "note": "Preços em USD. Você pode cancelar a qualquer momento.",
+    "plans": [
+      { "name": "Grátis", "price": "$0", "period": "", "features": ["1 Simulação básica", "10 perguntas gerais"], "cta": "Experimentar" },
+      { "name": "Starter", "price": "$29", "period": "/mês", "features": ["3 Simulações completas", "Detecção de contradições", "Relatório básico de feedback"], "cta": "Selecionar" },
+      { "name": "Pro", "price": "$49", "period": "/mês", "features": ["10 Simulações completas", "Análise profunda", "Guia de perguntas difíceis", "Suporte prioritário"], "cta": "Selecionar Pro", "highlight": true },
+      { "name": "Advogados", "price": "$99", "period": "/mês", "features": ["Clientes ilimitados", "Painel de gestão", "Créditos de IA extra"], "cta": "Contatar Vendas" }
+    ]
+  },
+  "faq": {
+    "title": "Perguntas Frequentes",
+    "items": [
+      { "q": "A IA substitui um advogado?", "a": "Não. O ProSe Ready é uma ferramenta de preparação complementar. Sempre recomendamos ter assessoria jurídica profissional para o seu caso." },
+      { "q": "Minhas informações são privadas?", "a": "Sim. Usamos criptografia de nível bancário e não compartilhamos seus dados ou narrativas com terceiros. Sua privacidade é nossa prioridade absoluta." },
+      { "q": "Em quais idiomas posso praticar?", "a": "Nossa IA suporta Espanhol, Inglês, Francês e mais de 20 idiomas, permitindo que você pratique em seu idioma nativo ou no idioma da entrevista." }
+    ]
+  },
+  "cta": {
+    "title": "Não deixe seu futuro",
+    "titleEnd": "ao acaso.",
+    "subtitle": "Milhares de solicitantes melhoraram sua confiança e clareza com nossas simulações interativas.",
+    "button": "Começar minha preparação hoje"
+  },
+  "footer": {
+    "desc": "Simulador de entrevistas de asilo com IA para ajudar solicitantes a se prepararem para o futuro.",
+    "links": "Links",
+    "privacy": "Privacidade",
+    "terms": "Termos",
+    "contact": "Contato",
+    "scenariosTitle": "Cenários",
+    "languageTitle": "Idioma",
+    "disclaimer": "AVISO LEGAL: O ProSe Ready é uma plataforma tecnológica e não é um escritório de advocacia, não fornece assessoria jurídica e não substitui um advogado. Não somos afiliados ao USCIS, ICE, DHS ou qualquer agência governamental dos EUA.",
+    "rights": "© 2024 ProSe Ready. Todos os direitos reservados."
+  }
+}

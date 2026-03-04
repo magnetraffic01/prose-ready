@@ -1,37 +1,22 @@
-const scenarios = [
-  {
-    tag: "Afirmativo",
-    title: "USCIS (Oficina de Asilo)",
-    desc: "Ideal para quienes están dentro de EE.UU. y solicitan asilo voluntariamente. Enfoque en credibilidad y detalles del relato.",
-    emoji: "🏛️",
-  },
-  {
-    tag: "Defensivo Inicial",
-    title: "Miedo Creíble",
-    desc: "Preparación para la entrevista crítica en frontera. Aprende a identificar y comunicar los elementos clave de persecución bajo presión.",
-    emoji: "⚖️",
-  },
-  {
-    tag: "Judicial",
-    title: "Corte de Inmigración",
-    desc: "Simula un contrainterrogatorio del fiscal del gobierno (ICE) y preguntas directas del Juez de Inmigración.",
-    emoji: "👨‍⚖️",
-  },
-];
+import { useTranslations } from "next-intl";
+
+const emojis = ["🏛️", "⚖️", "👨‍⚖️"];
 
 export default function Scenarios() {
+  const t = useTranslations("scenarios");
+  const items = t.raw("items") as { tag: string; title: string; desc: string }[];
   return (
     <section className="py-24" id="escenarios">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-black mb-4">Escenarios de Práctica</h2>
-          <p className="text-slate-600">Diseñados para replicar exactamente cada etapa del proceso migratorio.</p>
+          <h2 className="text-3xl font-black mb-4">{t("title")}</h2>
+          <p className="text-slate-600">{t("subtitle")}</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {scenarios.map(({ tag, title, desc, emoji }) => (
+          {items.map(({ tag, title, desc }, i) => (
             <div key={title} className="glass-card rounded-[2.5rem] overflow-hidden flex flex-col group h-full transition-all hover:shadow-2xl hover:shadow-primary/10">
               <div className="h-56 overflow-hidden relative bg-gradient-to-br from-blue-50 to-slate-100 flex items-center justify-center">
-                <span className="text-7xl group-hover:scale-110 transition-transform duration-700">{emoji}</span>
+                <span className="text-7xl group-hover:scale-110 transition-transform duration-700">{emojis[i]}</span>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               </div>
               <div className="p-10 flex flex-col flex-1">
@@ -39,7 +24,7 @@ export default function Scenarios() {
                 <h3 className="text-2xl font-black mb-4">{title}</h3>
                 <p className="text-slate-500 mb-8 flex-1 leading-relaxed text-sm">{desc}</p>
                 <button className="w-full py-4 glass-button text-slate-900 font-black rounded-2xl hover:bg-primary hover:text-white transition-all">
-                  Seleccionar
+                  {t("select")}
                 </button>
               </div>
             </div>

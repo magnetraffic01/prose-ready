@@ -1,0 +1,96 @@
+{
+  "nav": {
+    "howItWorks": "How it works",
+    "scenarios": "Scenarios",
+    "plans": "Plans",
+    "faq": "FAQ",
+    "language": "English",
+    "cta": "Free Simulation"
+  },
+  "hero": {
+    "badge": "AI Trained on U.S. Asylum Processes",
+    "title": "AI-powered asylum",
+    "titleHighlight": "interview",
+    "titleEnd": "simulator",
+    "subtitle": "The officer won't give you a second chance.",
+    "subtitleHighlight": "We will.",
+    "subtitleEnd": "Practice your interview as if it were the real day with our risk detection technology.",
+    "ctaPrimary": "Start free simulation",
+    "ctaSecondary": "See how it works",
+    "sessionLabel": "Simulation Session",
+    "sessionStatus": "Simulation in progress...",
+    "alertTitle": "Contradiction Alert",
+    "alertDesc": "Your answer about the entry date differs from your initial statement on Form I-589."
+  },
+  "why": {
+    "title": "Why ProSe Ready?",
+    "subtitle": "Because we give you real preparation to face your process with confidence.",
+    "features": [
+      { "title": "Understand your case", "desc": "Analyze the key points of your asylum narrative and strengthen your story." },
+      { "title": "One step ahead", "desc": "Anticipate the tough questions the officer might ask you." },
+      { "title": "Know the risks", "desc": "Identify possible contradictions before your official appointment." },
+      { "title": "No improvising", "desc": "Arrive prepared with clear, legally structured answers." },
+      { "title": "Total calm", "desc": "Reduce anxiety by practicing in a safe and private environment." }
+    ]
+  },
+  "problem": {
+    "title": "Saturated legal aid and language barriers",
+    "desc": "The legal system is overwhelmed and not knowing what to expect dramatically increases the risk of denial. ProSe Ready bridges the technology gap so you can defend your case with the same tools as an expert.",
+    "cta": "Learn more about the system"
+  },
+  "how": {
+    "title": "How it works in 3 steps",
+    "steps": [
+      { "title": "Understand your case", "desc": "Analyze the key points of your asylum narrative and strengthen your story." },
+      { "title": "Practice the interview", "desc": "Simulate real questions with our AI trained on USCIS processes." },
+      { "title": "Get feedback", "desc": "Identify contradictions and areas for improvement before your official appointment." }
+    ]
+  },
+  "scenarios": {
+    "title": "Practice Scenarios",
+    "subtitle": "Designed to replicate exactly each stage of the immigration process.",
+    "select": "Select",
+    "items": [
+      { "tag": "Affirmative", "title": "USCIS (Asylum Office)", "desc": "Ideal for those inside the U.S. who voluntarily apply for asylum. Focus on credibility and details of the account." },
+      { "tag": "Initial Defensive", "title": "Credible Fear", "desc": "Preparation for the critical border interview. Learn to identify and communicate the key elements of persecution under pressure." },
+      { "tag": "Judicial", "title": "Immigration Court", "desc": "Simulate a cross-examination by the government attorney (ICE) and direct questions from the Immigration Judge." }
+    ]
+  },
+  "pricing": {
+    "title": "Preparation Plans",
+    "subtitle": "Choose the option that best fits your current stage.",
+    "recommended": "Recommended",
+    "note": "Prices in USD. You can cancel at any time.",
+    "plans": [
+      { "name": "Free", "price": "$0", "period": "", "features": ["1 Basic simulation", "10 general questions"], "cta": "Try now" },
+      { "name": "Starter", "price": "$29", "period": "/mo", "features": ["3 Full simulations", "Contradiction detection", "Basic feedback report"], "cta": "Select" },
+      { "name": "Pro", "price": "$49", "period": "/mo", "features": ["10 Full simulations", "Deep analysis", "Tough questions guide", "Priority support"], "cta": "Select Pro", "highlight": true },
+      { "name": "Attorneys", "price": "$99", "period": "/mo", "features": ["Unlimited clients", "Management dashboard", "Extra AI credits"], "cta": "Contact Sales" }
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      { "q": "Does AI replace a lawyer?", "a": "No. ProSe Ready is a complementary preparation tool. We always recommend having professional legal counsel for your case." },
+      { "q": "Is my information private?", "a": "Yes. We use bank-grade encryption and do not share your data or narratives with third parties. Your privacy is our absolute priority." },
+      { "q": "In what languages can I practice?", "a": "Our AI supports Spanish, English, French and 20+ other languages, allowing you to practice in your native language or the interview language." }
+    ]
+  },
+  "cta": {
+    "title": "Don't leave your future",
+    "titleEnd": "to chance.",
+    "subtitle": "Thousands of applicants have improved their confidence and clarity with our interactive simulations.",
+    "button": "Start my preparation today"
+  },
+  "footer": {
+    "desc": "AI-powered asylum interview simulator to help asylum seekers prepare for their future.",
+    "links": "Links",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "contact": "Contact",
+    "scenariosTitle": "Scenarios",
+    "languageTitle": "Language",
+    "disclaimer": "DISCLAIMER: ProSe Ready is a technology platform and is not a law firm, does not provide legal advice and is not a substitute for an attorney. We are not affiliated with USCIS, ICE, DHS or any U.S. government agency.",
+    "rights": "© 2024 ProSe Ready. All rights reserved."
+  }
+}
