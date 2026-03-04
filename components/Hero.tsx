@@ -1,10 +1,13 @@
 "use client";
 import { useTranslations } from "next-intl";
-import { ShieldCheck, PlayCircle } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
+import { motion } from "framer-motion";
 import ChatSimulatorWidget from "./ChatSimulatorWidget";
+import { fadeUp, slideInLeft, slideInRight, staggerContainer } from "@/lib/animations";
 
 export default function Hero() {
   const t = useTranslations("hero");
+
   return (
     <section
       className="relative overflow-hidden pt-20 pb-24 lg:pt-40 lg:pb-52"
@@ -12,35 +15,62 @@ export default function Hero() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-12">
 
-        {/* Left: Copy */}
-        <div className="flex-1 text-left">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-button text-primary text-[10px] font-bold uppercase tracking-widest mb-8">
+        {/* Left */}
+        <motion.div
+          className="flex-1 text-left"
+          variants={staggerContainer(0.12, 0.1)}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-button text-primary text-[10px] font-bold uppercase tracking-widest mb-8">
             <ShieldCheck className="w-4 h-4" />
             {t("badge")}
-          </div>
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-slate-900 leading-none mb-8">
+          </motion.div>
+
+          <motion.h1
+            variants={fadeUp}
+            className="text-5xl sm:text-6xl lg:text-7xl font-black text-slate-900 leading-none mb-8"
+          >
             {t("title")} <span className="text-primary">{t("titleHighlight")}</span> {t("titleEnd")}
-          </h1>
-          <p className="text-xl font-medium text-slate-500 mb-10 max-w-2xl leading-relaxed">
+          </motion.h1>
+
+          <motion.p variants={fadeUp} className="text-xl font-medium text-slate-500 mb-10 max-w-2xl leading-relaxed">
             {t("subtitle")}{" "}
             <span className="text-primary font-bold italic">{t("subtitleHighlight")}</span>{" "}
             {t("subtitleEnd")}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-5">
-            <button className="glossy-primary text-white text-lg font-bold px-10 py-5 rounded-2xl hover:scale-105 transition-all">
-              {t("ctaPrimary")}
-            </button>
-            <button className="flex items-center justify-center gap-2 glass-button text-slate-900 text-lg font-bold px-10 py-5 rounded-2xl hover:bg-white/60 transition-all">
-              <PlayCircle className="w-6 h-6" />
-              {t("ctaSecondary")}
-            </button>
-          </div>
-        </div>
+          </motion.p>
 
-        {/* Right: Animated Chat Simulator */}
-        <div className="flex-1 w-full max-w-lg lg:max-w-none">
+          <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-5">
+            <motion.button
+              className="glossy-primary text-white text-lg font-bold px-10 py-5 rounded-2xl"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            >
+              {t("ctaPrimary")}
+            </motion.button>
+            <motion.a
+              href="#como-funciona"
+              className="flex items-center justify-center gap-2 glass-button text-slate-900 text-lg font-bold px-10 py-5 rounded-2xl hover:bg-white/60 transition-all"
+              whileHover={{ scale: 1.04, y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            >
+              {t("ctaSecondary")}
+            </motion.a>
+          </motion.div>
+        </motion.div>
+
+        {/* Right: Chat Simulator */}
+        <motion.div
+          className="flex-1 w-full max-w-lg lg:max-w-none"
+          variants={slideInRight}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 0.3 }}
+        >
           <ChatSimulatorWidget />
-        </div>
+        </motion.div>
 
       </div>
     </section>

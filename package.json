@@ -12,6 +12,7 @@
     "@prisma/client": "^6.19.2",
     "@remotion/cli": "^4.0.432",
     "@remotion/renderer": "^4.0.432",
+    "framer-motion": "^12.34.5",
     "lucide-react": "^0.576.0",
     "next": "16.1.6",
     "next-intl": "^4.8.3",
