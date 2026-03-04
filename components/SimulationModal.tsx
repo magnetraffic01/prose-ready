@@ -194,7 +194,7 @@ export default function SimulationModal({ isOpen, onClose }: Props) {
                         style={{ animation: "pulse-dot 2s infinite" }}
                       />
                       <span className="text-xs text-green-600 font-semibold">
-                        Sesión activa · GPT-4.5
+                        Sesión activa · gpt-5-mini
                       </span>
                     </div>
                   </div>
