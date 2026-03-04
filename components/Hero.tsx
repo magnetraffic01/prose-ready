@@ -1,12 +1,14 @@
 "use client";
 import { useTranslations } from "next-intl";
-import { ShieldCheck, PlayCircle, AlertTriangle } from "lucide-react";
+import { ShieldCheck, PlayCircle } from "lucide-react";
 
 export default function Hero() {
   const t = useTranslations("hero");
   return (
     <section className="relative overflow-hidden pt-20 pb-24 lg:pt-40 lg:pb-52" style={{ background: "linear-gradient(to bottom, rgba(239,246,255,0.5), transparent)" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-12">
+
+        {/* Left: Copy */}
         <div className="flex-1 text-left">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-button text-primary text-[10px] font-bold uppercase tracking-widest mb-8">
             <ShieldCheck className="w-4 h-4" />
@@ -30,32 +32,22 @@ export default function Hero() {
             </button>
           </div>
         </div>
+
+        {/* Right: Remotion Video */}
         <div className="flex-1 w-full max-w-xl lg:max-w-none">
-          <div className="relative rounded-2xl overflow-hidden glass-card">
-            <div className="bg-white p-4 border-b border-slate-200 flex items-center justify-between">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                <div className="w-3 h-3 rounded-full bg-green-400"></div>
-              </div>
-              <span className="text-xs font-medium text-slate-400 uppercase tracking-widest">{t("sessionLabel")}</span>
-              <div className="w-10"></div>
-            </div>
-            <div className="bg-gradient-to-br from-slate-100 to-blue-50 h-64 flex items-center justify-center">
-              <div className="text-center text-slate-400">
-                <div className="w-20 h-20 rounded-full bg-slate-200 mx-auto mb-4 flex items-center justify-center text-4xl">👩‍💼</div>
-                <p className="text-sm font-medium">{t("sessionStatus")}</p>
-              </div>
-            </div>
-            <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/90 backdrop-blur rounded-xl border border-primary/20 shadow-lg">
-              <div className="flex items-center gap-3 mb-2">
-                <AlertTriangle className="w-5 h-5 text-primary flex-shrink-0" />
-                <span className="font-bold text-sm text-slate-900">{t("alertTitle")}</span>
-              </div>
-              <p className="text-xs text-slate-600">{t("alertDesc")}</p>
-            </div>
+          <div className="relative rounded-2xl overflow-hidden glass-card shadow-2xl shadow-primary/10">
+            <video
+              src="/chat-simulation.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-auto rounded-2xl"
+              style={{ display: "block" }}
+            />
           </div>
         </div>
+
       </div>
     </section>
   );
