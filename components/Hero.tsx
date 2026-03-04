@@ -1,15 +1,24 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { ShieldCheck } from "lucide-react";
+import { ShieldCheck, MessageSquare, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import ChatSimulatorWidget from "./ChatSimulatorWidget";
 import SimulationModal from "./SimulationModal";
+import CallModal from "./CallModal";
 import { fadeUp, slideInRight, staggerContainer } from "@/lib/animations";
 
 export default function Hero() {
   const t = useTranslations("hero");
-  const [modalOpen, setModalOpen] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
+  const [callOpen, setCallOpen] = useState(false);
+
+  // Listen for navbar CTA event
+  useEffect(() => {
+    const handler = () => setChatOpen(true);
+    window.addEventListener("open-chat-simulator", handler);
+    return () => window.removeEventListener("open-chat-simulator", handler);
+  }, []);
 
   return (
     <>
@@ -50,22 +59,37 @@ export default function Hero() {
               {t("subtitleEnd")}
             </motion.p>
 
-            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-5">
-              {/* PRIMARY: opens the modal */}
+            {/* Two simulator buttons */}
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
+              {/* Chat simulator */}
               <motion.button
-                onClick={() => setModalOpen(true)}
-                className="glossy-primary text-white text-lg font-bold px-10 py-5 rounded-2xl"
+                onClick={() => setChatOpen(true)}
+                className="flex items-center justify-center gap-2.5 glossy-primary text-white text-base font-bold px-8 py-4 rounded-2xl"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
               >
-                {t("ctaPrimary")}
+                <MessageSquare className="w-5 h-5" />
+                Simular por Chat
               </motion.button>
 
-              {/* SECONDARY: scrolls to how it works */}
+              {/* Voice call simulator */}
+              <motion.button
+                onClick={() => setCallOpen(true)}
+                className="flex items-center justify-center gap-2.5 text-base font-bold px-8 py-4 rounded-2xl text-white"
+                style={{ background: "linear-gradient(135deg,#34d399,#059669)" }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              >
+                <Phone className="w-5 h-5" />
+                Simular por Llamada
+              </motion.button>
+
+              {/* How it works */}
               <motion.a
                 href="#como-funciona"
-                className="flex items-center justify-center gap-2 glass-button text-slate-900 text-lg font-bold px-10 py-5 rounded-2xl hover:bg-white/60 transition-all"
+                className="flex items-center justify-center glass-button text-slate-700 text-base font-bold px-8 py-4 rounded-2xl hover:bg-white/60 transition-all"
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
@@ -75,7 +99,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right: Chat Simulator preview */}
+          {/* Right: Chat Preview */}
           <motion.div
             className="flex-1 w-full max-w-lg lg:max-w-none"
             variants={slideInRight}
@@ -83,15 +107,14 @@ export default function Hero() {
             animate="visible"
             transition={{ delay: 0.3 }}
           >
-            <div className="relative cursor-pointer" onClick={() => setModalOpen(true)}>
+            <div className="relative cursor-pointer" onClick={() => setChatOpen(true)}>
               <ChatSimulatorWidget />
-              {/* Click overlay hint */}
               <motion.div
                 className="absolute inset-0 rounded-2xl flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity"
                 style={{ background: "rgba(52,148,244,0.08)" }}
               >
                 <span className="glossy-primary text-white font-black px-6 py-3 rounded-xl text-sm shadow-lg">
-                  Iniciar simulación real →
+                  Iniciar simulación por chat →
                 </span>
               </motion.div>
             </div>
@@ -100,8 +123,8 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* Full-screen simulation modal */}
-      <SimulationModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+      <SimulationModal isOpen={chatOpen} onClose={() => setChatOpen(false)} />
+      <CallModal isOpen={callOpen} onClose={() => setCallOpen(false)} />
     </>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
-import { Scale, Globe, ChevronDown } from "lucide-react";
+import { Scale, Globe, ChevronDown, MessageSquare } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -122,11 +122,13 @@ export default function Navbar() {
             </div>
 
             <motion.button
-              className="glossy-primary text-white text-sm font-bold px-6 py-2.5 rounded-full"
+              onClick={() => window.dispatchEvent(new CustomEvent("open-chat-simulator"))}
+              className="glossy-primary text-white text-sm font-bold px-6 py-2.5 rounded-full flex items-center gap-2"
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
             >
+              <MessageSquare className="w-4 h-4" />
               {t("cta")}
             </motion.button>
           </div>
